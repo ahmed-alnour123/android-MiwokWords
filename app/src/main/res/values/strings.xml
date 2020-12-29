@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">MyMiwokApp</string>
+    <string name="category_numbers">Numbers</string>
+    <string name="category_family">Family</string>
+    <string name="category_colors">Colors</string>
+    <string name="category_phrases">Phrases</string>
+
+    <!-- words and translations -->
+    <string name="english_number_one">one</string>
+    <string name="miwok_number_one">lutti</string>
+    <string name="english_number_two">two</string>
+    <string name="miwok_number_two">otiiko</string>
+    <string name="english_number_three">three</string>
+    <string name="miwok_number_three">tolookosu</string>
+    <string name="english_number_four">four</string>
+    <string name="miwok_number_four">oyyisa</string>
+    <string name="english_number_five">five</string>
+    <string name="miwok_number_five">massokka</string>
+    <string name="english_number_six">six</string>
+    <string name="miwok_number_six">temmokka</string>
+    <string name="english_number_seven">seven</string>
+    <string name="miwok_number_seven">kenekaku</string>
+    <string name="english_number_eight">eight</string>
+    <string name="miwok_number_eight">kawinta</string>
+    <string name="english_number_nine">nine</string>
+    <string name="miwok_number_nine">wo’e</string>
+    <string name="english_number_ten">ten</string>
+    <string name="miwok_number_ten">na’aacha</string>
+
+</resources>
