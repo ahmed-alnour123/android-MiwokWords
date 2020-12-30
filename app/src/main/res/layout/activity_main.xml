@@ -6,27 +6,29 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+
     <TextView
         android:id="@+id/numbers"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
+        style="@style/mainMenuItem"
         android:text="@string/category_numbers" />
+
 
     <TextView
         android:id="@+id/family"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
+        style="@style/mainMenuItem"
+        android:background="@color/category_family"
         android:text="@string/category_family" />
+
 
     <TextView
         android:id="@+id/colors"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
+        style="@style/mainMenuItem"
+        android:background="@color/category_colors"
         android:text="@string/category_colors" />
 
     <TextView
         android:id="@+id/phrases"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
+        style="@style/mainMenuItem"
+        android:background="@color/category_phrases"
         android:text="@string/category_phrases" />
 </LinearLayout>

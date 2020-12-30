@@ -41,7 +41,7 @@ public class NumbersActivity extends AppCompatActivity {
         audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
         ArrayList<Word> words = fillArrayList();
-        WordAdapter adapter = new WordAdapter(this, R.layout.list_item, words);
+        WordAdapter adapter = new WordAdapter(this, R.layout.list_item, words, R.color.category_numbers);
         ListView listView = findViewById(R.id.list);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener((adapterView, view, i, l) -> {
@@ -50,7 +50,11 @@ public class NumbersActivity extends AppCompatActivity {
                     AudioManager.AUDIOFOCUS_GAIN_TRANSIENT) == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
                 releaseMediaPlayer();
                 mediaPlayer = MediaPlayer.create(this, words.get(i).getSound());
-                mediaPlayer.setOnCompletionListener(mp -> releaseMediaPlayer());
+                if (words.get(i).getSound() == R.raw.jouske_theme){
+                    mediaPlayer.setLooping(true);
+                } else {
+                    mediaPlayer.setOnCompletionListener(mp -> releaseMediaPlayer());
+                }
                 mediaPlayer.start();
             }
         });
@@ -87,7 +91,8 @@ public class NumbersActivity extends AppCompatActivity {
         words.add(new Word(R.string.english_number_eight, R.string.miwok_number_eight, R.drawable.number_eight, R.raw.number_eight));
         words.add(new Word(R.string.english_number_nine, R.string.miwok_number_nine, R.drawable.number_nine, R.raw.number_nine));
         words.add(new Word(R.string.english_number_ten, R.string.miwok_number_ten, R.drawable.number_ten, R.raw.number_ten));
-        words.add(new Word(R.string.english_number_ten, R.string.miwok_number_ten, R.drawable.number_ten, R.raw.giorno_theme));
+        words.add(new Word(R.string.english_number_five, R.string.miwok_number_five, R.drawable.number_five, R.raw.giorno_theme));
+        words.add(new Word(R.string.english_number_four, R.string.miwok_number_four, R.drawable.number_four, R.raw.jouske_theme));
         return words;
     }
 }

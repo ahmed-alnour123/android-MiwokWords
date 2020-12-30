@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="width">88dp</dimen>
+    <dimen name="half_width">44dp</dimen>
+    <dimen name="padding">16dp</dimen>
+</resources>

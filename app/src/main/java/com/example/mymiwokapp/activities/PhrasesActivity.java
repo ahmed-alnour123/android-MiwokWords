@@ -41,7 +41,7 @@ public class PhrasesActivity extends AppCompatActivity {
         audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
         ArrayList<Word> words = fillArrayList();
-        WordAdapter adapter = new WordAdapter(this, R.layout.list_item, words);
+        WordAdapter adapter = new WordAdapter(this, R.layout.list_item, words, R.color.category_phrases);
         ListView listView = findViewById(R.id.list);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener((adapterView, view, i, l) -> {

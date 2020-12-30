@@ -19,8 +19,10 @@ import com.example.mymiwokapp.R;
 import java.util.List;
 
 public class WordAdapter extends ArrayAdapter<Word> {
-    public WordAdapter(@NonNull Context context, int resource, @NonNull List<Word> wordList) {
+    private int color;
+    public WordAdapter(@NonNull Context context, int resource, @NonNull List<Word> wordList, int color) {
         super(context, 0, wordList);
+        this.color = color;
     }
 
     @NonNull
@@ -31,6 +33,7 @@ public class WordAdapter extends ArrayAdapter<Word> {
             rootView = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
         }
 
+        rootView.setBackgroundColor(getContext().getColor(color));
         Word currentWord = getItem(position);
         ImageView image = rootView.findViewById(R.id.image);
         TextView englishWord = rootView.findViewById(R.id.english_text);
