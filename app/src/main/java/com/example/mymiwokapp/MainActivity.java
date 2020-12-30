@@ -1,10 +1,10 @@
 package com.example.mymiwokapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mymiwokapp.activities.ColorsActivity;
 import com.example.mymiwokapp.activities.FamilyActivity;
@@ -39,4 +39,5 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(this, PhrasesActivity.class));
         });
     }
+
 }
