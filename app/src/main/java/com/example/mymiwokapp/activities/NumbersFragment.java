@@ -4,10 +4,15 @@ import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.example.mymiwokapp.R;
 import com.example.mymiwokapp.word.Word;
@@ -15,7 +20,7 @@ import com.example.mymiwokapp.word.WordAdapter;
 
 import java.util.ArrayList;
 
-public class NumbersActivity extends AppCompatActivity {
+public class NumbersFragment extends Fragment {
 
     private MediaPlayer mediaPlayer;
     private AudioManager audioManager;
@@ -34,23 +39,23 @@ public class NumbersActivity extends AppCompatActivity {
         }
     };
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list);
-        audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.activity_list, container, false);
+        audioManager = (AudioManager) getContext().getSystemService(Context.AUDIO_SERVICE);
 
         ArrayList<Word> words = fillArrayList();
-        WordAdapter adapter = new WordAdapter(this, R.layout.list_item, words, R.color.category_numbers);
-        ListView listView = findViewById(R.id.list);
+        WordAdapter adapter = new WordAdapter(getContext(), R.layout.list_item, words, R.color.category_numbers);
+        ListView listView = rootView.findViewById(R.id.list);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener((adapterView, view, i, l) -> {
             if (audioManager.requestAudioFocus(myAudioFocusChangeListener,
                     AudioManager.STREAM_MUSIC,
                     AudioManager.AUDIOFOCUS_GAIN_TRANSIENT) == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
                 releaseMediaPlayer();
-                mediaPlayer = MediaPlayer.create(this, words.get(i).getSound());
-                if (words.get(i).getSound() == R.raw.jouske_theme){
+                mediaPlayer = MediaPlayer.create(getContext(), words.get(i).getSound());
+                if (words.get(i).getSound() == R.raw.jouske_theme) {
                     mediaPlayer.setLooping(true);
                 } else {
                     mediaPlayer.setOnCompletionListener(mp -> releaseMediaPlayer());
@@ -58,6 +63,7 @@ public class NumbersActivity extends AppCompatActivity {
                 mediaPlayer.start();
             }
         });
+        return rootView;
     }
 
     private void releaseMediaPlayer() {
@@ -70,11 +76,11 @@ public class NumbersActivity extends AppCompatActivity {
     }
 
     void showToast(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    protected void onStop() {
+    public void onStop() {
         super.onStop();
         releaseMediaPlayer();
     }
