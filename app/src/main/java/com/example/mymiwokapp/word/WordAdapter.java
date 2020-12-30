@@ -1,6 +1,8 @@
 package com.example.mymiwokapp.word;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mymiwokapp.R;
 
@@ -33,7 +36,11 @@ public class WordAdapter extends ArrayAdapter<Word> {
         TextView englishWord = rootView.findViewById(R.id.english_text);
         TextView miwokWord = rootView.findViewById(R.id.miwok_text);
 
-        image.setImageResource(currentWord.getImage());
+        if (currentWord.getImage() != 0) {
+            image.setImageResource(currentWord.getImage());
+        } else {
+            image.setVisibility(View.GONE);
+        }
         englishWord.setText(currentWord.getEnglishWord());
         miwokWord.setText(currentWord.getMiwokWord());
 

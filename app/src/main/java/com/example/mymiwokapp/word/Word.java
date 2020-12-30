@@ -1,9 +1,13 @@
 package com.example.mymiwokapp.word;
 
+import android.app.Application;
+import android.content.Context;
+
 import androidx.annotation.DrawableRes;
 import androidx.annotation.Nullable;
 import androidx.annotation.RawRes;
 import androidx.annotation.StringRes;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Word {
     @StringRes private int englishWord;
@@ -18,7 +22,10 @@ public class Word {
         this.sound = sound;
     }
     public Word(int englishWord, int miwokWord, @RawRes int sound){
-        new Word(englishWord, miwokWord, 0, sound);
+        this.englishWord = englishWord;
+        this.miwokWord = miwokWord;
+        this.image = 0;
+        this.sound = sound;
     }
 
     public int getEnglishWord() {
@@ -35,5 +42,15 @@ public class Word {
 
     public int getSound() {
         return sound;
+    }
+
+    @Override
+    public String toString() {
+        return "Word{" +
+                "englishWord=" + englishWord +
+                ", miwokWord=" + miwokWord +
+                ", image=" + image +
+                ", sound=" + sound +
+                '}';
     }
 }
